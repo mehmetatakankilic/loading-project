@@ -1,0 +1,52 @@
+/* Sayfa Genel Ayarları */
+body {
+    display: flex;             /* İçeriği hem yatayda hem dikeyde ortalamak için */
+    justify-content: center;   /* Yatay ortalama */
+    align-items: center;       /* Dikey ortalama */
+    height: 100vh;            /* Tam ekran yüksekliği */
+    margin: 0;                /* Varsayılan tarayıcı boşluklarını sıfırla */
+    background-color: black;
+    color: white;
+    font-family: sans-serif;  /* Yazı tipi daha modern dursun diye ekledim */
+}
+
+/* Kapsayıcı */
+.container {
+    width: 400px; 
+    text-align: center;
+    /* ÖNEMLİ: Position Relative
+       İçindeki 'absolute' elemanların (barların) bu kutunun sınırlarına göre 
+       konumlanmasını sağlar. Bunu yazmazsak bar'lar sayfanın en tepesine gider.
+    */
+    position: relative; 
+}
+
+.counter {
+    font-size: 40px;
+    margin-bottom: 20px; /* Yazı ile bar arasına boşluk */
+}
+
+/* Arka Plandaki Sabit Çizgi (Beyaz) */
+.loadingBarGround {
+    height: 10px;
+    background-color: white;
+    border: none;           /* HR etiketinin varsayılan kenarlığını kaldır */
+    border-radius: 5px;     /* Kenarları yuvarlat */
+    position: absolute;     /* Akıştan çıkar, üst üste binmeye hazırla */
+    width: 100%;            /* Kapsayıcının tamamını kapla */
+    left: 0;                /* Sol başa yasla */
+    bottom: 0;              /* Konumu sabitlemek için opsiyonel */
+}
+
+/* Ön Plandaki Hareketli Çizgi (Kırmızı) */
+.loadingBarFront {
+    height: 10px;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    position: absolute;     /* Ground ile aynı konuma yerleşip üstüne biner */
+    width: 0%;              /* Başlangıçta genişlik 0 (JS ile artacak) */
+    left: 0;                /* Soldan başlayarak büyümesi için */
+    bottom: 0;
+    transition: width 0.1s; /* Pürüzsüz geçiş efekti */
+}
